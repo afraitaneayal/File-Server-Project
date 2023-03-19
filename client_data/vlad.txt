@@ -1,0 +1,49 @@
+Le protocole http                             AFRAITANE AYAL
+
+HTTP signifie « Hypertext Transfer Protocol ». Ce protocole a été développé par Tim Berners-Lee au CERN (Suisse).
+HTTP est un protocole qui permet de récupérer des ressources telles que des documents HTML. Il est à la base de tout échange de données sur le Web. C'est un protocole de type client-serveur, ce qui signifie que les requêtes sont initiées par le destinataire (qui est généralement un navigateur web). Un document complet est construit à partir de différents sous-documents qui sont récupérés, par exemple du texte, des descriptions de mise en page, des images, des vidéos, des scripts et bien plus.
+Conçu au début des années 1990, HTTP est un protocole extensible qui a évolué au cours du temps. C'est un protocole de la couche application dont les données transitent via TCP ou à travers une connexion TCP chiffrée avec TLS.
+Les différentes versions du http
+HTTP/0.9 – Le protocole une ligne
+La version initiale de HTTP n'avait pas de numéro de version. Elle fut appelée 0.9 pour la différencier des versions ultérieures. HTTP/0.9 est extrêmement simple : la requête se compose d'une ligne unique et commence par la seule méthode possible GET, suivie par le chemin pour accéder à la ressource (sans l'URL, puisque ni protocole, serveur ni port ne sont nécessaires quand on est connecté au serveur) :
+GET /monfichier.html
+La réponse est aussi extrêmement simple, il s'agit directement du fichier demandé :
+<HTML>
+Une page HTML très simple
+</HTML>
+Copy to Clipboard
+Contrairement aux évolutions suivantes, il n'y avait pas d'en-tête HTTP. Cela signifie que seuls des fichiers HTML pouvaient être transmis, à l'exclusion de tout autre type de documents.
+HTTP/1.0 – Mise en place de l'extensibilité
+HTTP/0.9 était très limité. Navigateurs et serveurs l'ont rapidement étendu vers des usages plus polyvalents.
+•	Dans chaque requête figurent dorénavant les informations de version (HTTP/1.0 est ajouté à la ligne GET).
+•	Une ligne de code d'état est aussi envoyée au début de chaque réponse. Elle permet au navigateur de prendre connaissance du succès ou de l'échec de la requête, et de s'adapter en conséquence (avec une mise à jour, par exemple, ou en utilisant son cache local de manière spécifique).
+•	La notion d'en-tête HTTP a été mise en place à la fois pour les requêtes et pour les réponses. Elle autorise la transmission de métadonnées, et rend le protocole très flexible et extensible.
+•	Avec ces nouveaux en-têtes HTTP, il est désormais possible de transmettre d'autres documents que des fichiers HTML bruts (grâce à l'en-tête Content-Type.
+HTTP/1.1 – Le protocole standardisé
+Parallèlement aux usages quelque peu chaotiques des différentes applications HTTP/1.0, dès 1995 c'est-à-dire bien avant la publication du document HTTP/1.0 l'année suivante, une standardisation appropriée se trouvait sur les rails. HTTP/1.1, première version standardisée de HTTP, fut publié début 1997, seulement quelques mois après HTTP/1.0.
+HTTP/1.1 dissipait des ambiguïtés et introduisait de nombreuses améliorations.
+•	Connexion pouvant être réutilisée : économie du temps qu'il faudrait pour en ouvrir plusieurs dans le but de présenter les ressources constituant le document original récupéré.
+•	Ajout du pipelining : permet d'envoyer une seconde requête avant que la réponse de la première ne soit complètement transmise, diminuant le temps de latence de la communication.
+•	Désormais les réponses par morceau sont aussi supportées.
+•	Mise en place de mécanismes de contrôle de caches additionnels.
+•	Mise en place de la négociation de contenu pour le langage, l'encodage et le type : le client et le serveur peuvent ainsi se mettre d'accord sur le contenu le plus adéquat à échanger.
+•	Grâce à l'en-tête Host, la capacité à héberger différents domaines sur la même adresse IP autorise désormais une colocation de serveurs.
+HTTP/2 – Un protocole pour plus de performances
+Au fur et à mesure, les pages web sont devenues de plus en plus complexes quitte à devenir des applications à part entière. La quantité de contenu multimédia ainsi que le nombre de scripts permettant plus d'interactivité ont aussi augmenté, ainsi de plus en plus de données sont transférées via des requêtes HTTP. Le protocole HTTP/2 diffère de HTTP/1.1 sur plusieurs aspects:
+•	Il est encodé en binaire plutôt qu'en texte. Il ne peut donc plus être lu ou écrit à la main. Malgré cette difficulté, il est désormais possible d'implémenter des techniques d'optimisation avancée.
+•	C'est un protocole multiplexé. Plusieurs requêtes en parallèle peuvent être gérées au sein de la même connexion, supprimant ainsi la limitation séquentielle de HTTP/1.x.
+•	HTTP/2 compresse les en-têtes, étant donné que des en-têtes similaires sont échangés lors d'une suite de requêtes, on supprime ainsi la duplication et l'échange inutiles des données similaires.
+•	Il permet au serveur de remplir le cache du client avant qu'il ne soit demandé par ce dernier, on parle alors d'évènements générés par le serveur.
+
+
+
+
+
+
+
+
+
+REFERENCES
+https://developer.mozilla.org/fr/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP
+https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/definition-protocole-http/
+
